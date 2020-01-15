@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 // import {Switch, Route } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
-import './App.css';
-import { Header, Footer } from './Components/Layouts/Hf';
+import './Style.css';
+import { Header, Footer } from './Components/Reusables/Hf';
+import Landing from './Components/Landing/Landing';
 import Main from './Components/Body/Main';
 import HamB from './Components/Hambuger/HamB';
 import BackDrop from './Components/Hambuger/BackDrop'
@@ -16,33 +17,34 @@ export default class App extends Component {
 
   hamBToggle = () => {
     this.setState((prevState) => {
-      return {HamBOpen: !prevState.HamBOpen};
+      return { HamBOpen: !prevState.HamBOpen };
     });
   };
 
-  closeBackDrop = () =>{
-    this.setState({HamBOpen: false});
+  closeBackDrop = () => {
+    this.setState({ HamBOpen: false });
   };
 
   render() {
-    let backDrop; 
+    let backDrop;
 
-    if(this.state.HamBOpen) {
+    if (this.state.HamBOpen) {
       backDrop = <BackDrop click={this.closeBackDrop} />;
     }
 
     return (
       <React.Fragment>
-        <Header hamBClick={this.hamBToggle} />   
-        <HamB show={this.state.HamBOpen}/>
+        <Header hamBClick={this.hamBToggle} />
+        <HamB show={this.state.HamBOpen} />
         {backDrop}
         <Switch>
-          <Route exact path='/' component={Main} />
-          <Route  path='/funfact' component={FunFact} />
-          <Route  path='/work' component={Work} />
-        </Switch>    
+          <Route exact path='/' component={Landing} />
+          <Route path='/main' component={Main} />
+          <Route path='/funfact' component={FunFact} />
+          <Route path='/work' component={Work} />
+        </Switch>
         <Footer />
-      </React.Fragment>  
+      </React.Fragment>
 
     );
   }

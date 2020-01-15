@@ -1,6 +1,6 @@
 import React from 'react';
 import HamBToggle from '../Hambuger/HamBToggle';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { AppBar, Toolbar, Typography, makeStyles, Zoom, Fab, CssBaseline, useScrollTrigger } from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
@@ -23,7 +23,7 @@ function ScrollTop(props) {
   const trigger = useScrollTrigger({
   });
 
-  
+
   const handleClick = event => {
     const anchor = (event.target.ownerDocument || document).querySelector('#back-to-top-anchor');
 
@@ -36,28 +36,31 @@ function ScrollTop(props) {
     <Zoom in={trigger}>
       <div onClick={handleClick} role='presentation' className={classes.root}>
         {children}
-      </div> 
+      </div>
     </Zoom>
   );
 }
 
 const Header = props => (
-  
-  <React.Fragment>    
+
+  <React.Fragment>
     <CssBaseline />
-    <AppBar position='static' style={{ backgroundColor: 'var(--lightBlackC)' }}>      
+    <AppBar position='static' style={{ backgroundColor: 'var(--lightBlackC)' }}>
       <Toolbar className='headerButtons'>
         <Typography>
           <div className='hideH'>
-          <HamBToggle click={props.hamBClick}/> 
-          </div>        
-          <nav className='navDiv'>                     
+            <HamBToggle click={props.hamBClick} />
+          </div>
+          <nav className='navDiv'>
             <ul className='navbar-nav tags'>
               <li className='nav-item tag'>
                 <Link to='/' className='hLink'>Home</Link>
               </li>
-              <li className='nav-item tag'>                
-                <Link to='/work'  className='hLink'>
+              <li className='nav-item tag'>
+                <Link to='/main' className='hLink'>MeetMe</Link>
+              </li>
+              <li className='nav-item tag'>
+                <Link to='/work' className='hLink'>
                   Work
                 </Link>
               </li>
@@ -67,8 +70,8 @@ const Header = props => (
                 </a>
               </li>
               <li className='nav-item tag'>
-                <Link to='/funfact'  className='hLink'>
-                  Fun Fact
+                <Link to='/funfact' className='hLink'>
+                  FunFact
                 </Link>
               </li>
             </ul>
@@ -77,14 +80,14 @@ const Header = props => (
       </Toolbar>
     </AppBar>
     <Toolbar id='back-to-top-anchor' />
-        {/* ScrollTop icon */}
-        <ScrollTop >
+    {/* ScrollTop icon */}
+    <ScrollTop >
       <Fab color='secondary' size='small' aria-label='scroll back to top'>
         <KeyboardArrowUpIcon />
       </Fab>
     </ScrollTop>
   </React.Fragment>
-  );
+);
 
 
 export default Header;
